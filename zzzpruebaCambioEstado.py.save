@@ -1,0 +1,67 @@
+import RPi.GPIO as GPIO
+import time
+import sys
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+GPIO.setup(18,GPIO.OUT) ##GPIO18 como salida indica si hay que atenuar
+GPIO.setup(27,GPIO.OUT) ##GPIO27 como salida
+GPIO.setup(22,GPIO.OUT) ##GPIO22 como salida
+dato=[0,1,1,1,0,0,0,1,1]
+x = 0
+y = 0 var
+GPIO.output(22, True)
+GPIO.output(27, False)
+GPIO.output(18, True)
+time.sleep(0.001)
+
+#for x in range(0,5):
+while(x < 9):
+	y = x + 2
+        if dato[y]==0:
+		GPIO.output(22, False)
+	else:
+		GPIO.output(22, True)
+	print(dato[y])
+	y = x + 1
+	if dato[y]==0:
+                GPIO.output(27, False)
+        else:
+                GPIO.output(27, True)
+	print(dato[y])
+	y = x
+	if dato[y]==0:
+                GPIO.output(18, False)
+        else:
+                GPIO.output(18, True)
+	print(dato[y])
+	x = x + 3
+	time.sleep(0.001)
+
+#GPIO.output(22, True)
+#GPIO.output(27, False)
+#GPIO.output(18, False)
+#time.sleep(0.001)
+
+#GPIO.output(22, False)
+#GPIO.output(27, True)
+#GPIO.output(18, True)
+#time.sleep(0.001)
+
+#GPIO.output(22, False)
+#GPIO.output(27, False)
+#GPIO.output(18, False)
+#time.sleep(0.001)
+
+
+
+GPIO.output(22, False)
+GPIO.output(27, False)
+GPIO.output(18, False)
+time.sleep(1)
+#GPIO.output(18, not GPIO.input(18))
+print(sys.argv[1])
+var = bin(int(sys.argv[1]))
+print(var)
+for letra in var:
+	print(letra)

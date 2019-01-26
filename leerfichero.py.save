@@ -1,0 +1,7 @@
+fichero = open('fichero.txt')
+
+	fichero.seek(0)
+	print(fichero.read())
+else:
+	print('no')
+
